@@ -40,15 +40,16 @@ public class AccountService {
     }
 
     private String formatLine(Transaction transaction) {
-        BigDecimal displayAmount = transaction.getOperation() == OperationType.WITHDRAWAL
-                ? transaction.getAmount().negate()
-                : transaction.getAmount();
+        BigDecimal displayAmount = transaction.operation() == OperationType.WITHDRAWAL
+                ? transaction.amount().negate()
+                : transaction.amount();
     
         return String.format("%s | %-10s | %6s | %7s",
-                transaction.getDate().format(FORMATTER),
-                transaction.getOperation(),
+                transaction.date().format(FORMATTER),
+                transaction.operation(),
                 displayAmount,
-                transaction.getBalance());
+                transaction.balance());
+
     }
 
     private void validateAmount(BigDecimal amount) {
