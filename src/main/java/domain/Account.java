@@ -15,12 +15,12 @@ public class Account {
         return Collections.unmodifiableList(transactions);
     }
 
-    public void deposit(BigDecimal amount, LocalDate date) {
+    void deposit(BigDecimal amount, LocalDate date) {
         this.balance = this.balance.add(amount);
         this.transactions.add(new Transaction(date, OperationType.DEPOSIT, amount, this.balance));
     }
 
-    public void withdraw(BigDecimal amount, LocalDate date) {
+    void withdraw(BigDecimal amount, LocalDate date) {
         this.balance = this.balance.subtract(amount);
         this.transactions.add(new Transaction(date, OperationType.WITHDRAWAL, amount, this.balance));
     }
