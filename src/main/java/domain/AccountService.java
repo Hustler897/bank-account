@@ -5,7 +5,7 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
-
+import static java.util.Objects.requireNonNull;
 public class AccountService {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -53,6 +53,8 @@ public class AccountService {
     }
 
     private void validateAmount(BigDecimal amount) {
+        requireNonNull(amount, "Le montant est requis");
+        
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Le montant doit être positif");
         }
