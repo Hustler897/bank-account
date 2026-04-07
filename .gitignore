@@ -1,0 +1,10 @@
+# Maven
+target/
+
+# IDE
+.vscode/
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
